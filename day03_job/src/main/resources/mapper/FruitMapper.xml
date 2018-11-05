@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kv.dao.FruitDao">
+
+	<!-- 插入Fruit信息 -->
+	<insert id="save" parameterType="fruit">
+		insert into
+		fruit(fname,fmin,favg,fmax,fstand,funit,fdate)
+		values(#{name},#{min},#{avg},#{max},#{stand},#{unit},#{date});
+	</insert>
+
+	<!-- 批量插入Fruit信息 -->
+	<insert id="saves" parameterType="java.util.List">
+		insert into fruit(fname,fmin,favg,fmax,fstand,funit,fdate) values
+
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.name},#{item.min},#{item.avg},#{item.max},#{item.stand},#{item.unit},#{item.date})
+		</foreach>
+	</insert>
+
+	
+	<select id="getListByDate"  resultType="fruit">
+        select fname name,fmin min,favg avg,fmax max,fstand stand,funit unit,fdate date from fruit order by favg desc; 
+     
+     </select>
+
+</mapper>
