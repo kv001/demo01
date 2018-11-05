@@ -16,6 +16,10 @@ import com.kv.po.FruitVo;
 import com.kv.service.FruitService;
 import com.kv.utils.CatFruitUtils;
 
+/**
+ * @author Administrator
+ *	抓取数据
+ */
 @Controller
 public class FruitController {
 
